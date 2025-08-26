@@ -1,0 +1,19 @@
+{
+  "version": "5",
+  "redirects": {
+    "https://esm.sh/@supabase/supabase-js@2": "https://esm.sh/@supabase/supabase-js@2.56.0"
+  },
+  "remote": {
+    "https://esm.sh/@supabase/supabase-js@2.56.0": "50baccccd32442c4f244dfd29278f5f9b054ef3fb5c98e9afe2242d732355757"
+  },
+  "workspace": {
+    "dependencies": [
+      "jsr:@std/assert@1"
+    ],
+    "packageJson": {
+      "dependencies": [
+        "npm:@supabase/supabase-js@^2.56.0"
+      ]
+    }
+  }
+}
