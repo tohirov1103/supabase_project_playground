@@ -54,6 +54,27 @@ Deno.serve(async (req) => {
     const userId = pathParts[pathParts.length - 1] // Get last part as user ID
 
     if (req.method === 'GET') {
+      // If no userId is provided, return all users
+      if (!userId || userId === 'users') {
+        const { data, error } = await supabase
+          .from('users')
+          .select('*')
+          .order('created_at', { ascending: false })
+
+        if (error) {
+          return new Response(
+            JSON.stringify({ error: error.message }),
+            { status: 500, headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+          )
+        }
+
+        return new Response(
+          JSON.stringify({ data, count: data?.length || 0 }),
+          { headers: { 'Content-Type': 'application/json', ...corsHeaders } }
+        )
+      }
+
+      // Get specific user by ID
       const { data, error } = await supabase
         .from('users')
         .select('*')
